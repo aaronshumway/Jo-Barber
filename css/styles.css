@@ -316,13 +316,7 @@ button {
 .hero__pattern {
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    rgba(240, 50, 65, 0.42) 0 16px,
-    rgba(255, 255, 255, 0.24) 16px 32px,
-    rgba(40, 90, 200, 0.4) 32px 48px,
-    rgba(255, 255, 255, 0.24) 48px 64px
-  );
+  overflow: hidden;
   pointer-events: none;
   mask-image: radial-gradient(ellipse 72% 62% at 45% 45%, transparent 38%, rgba(0, 0, 0, 0.9) 100%);
   -webkit-mask-image: radial-gradient(ellipse 72% 62% at 45% 45%, transparent 38%, rgba(0, 0, 0, 0.9) 100%);
@@ -332,7 +326,31 @@ button {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(180deg, transparent 60%, rgba(4, 12, 30, 0.35));
+}
+
+/* Stripe widths are 12√2px so one full cycle is exactly 96px vertically,
+   letting the loop restart seamlessly */
+.hero__pattern::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 -96px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(240, 50, 65, 0.42) 0 16.9706px,
+    rgba(255, 255, 255, 0.24) 16.9706px 33.9411px,
+    rgba(40, 90, 200, 0.4) 33.9411px 50.9117px,
+    rgba(255, 255, 255, 0.24) 50.9117px 67.8823px
+  );
+  will-change: transform;
+  animation: poleSpin 3.2s linear infinite;
+}
+
+@keyframes poleSpin {
+  to {
+    transform: translateY(-96px);
+  }
 }
 
 .hero__copy {
