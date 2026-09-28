@@ -14,6 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -30,89 +33,61 @@
       </defs>
     </svg>
 
-    <header class="site-header site-header--home">
+    <header class="site-header">
       <div class="site-header__inner">
-        <div class="social" aria-label="Social media">
-          <a
-            class="social__link social__link--ig"
-            href="https://www.instagram.com/jo_barber32/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
-              />
-            </svg>
-          </a>
-          <a
-            class="social__link social__link--fb"
-            href="https://www.facebook.com/jorun.christianson.7"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"
-              />
-            </svg>
-          </a>
-        </div>
+        <a class="brand brand--wordmark" href="index.html">
+          <img src="images/wordmark.webp" alt="Jo-Barber" width="463" height="144" />
+        </a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
           <span></span>
         </button>
         <nav class="nav" aria-label="Primary">
           <a href="index.html" aria-current="page">Home</a>
-          <a href="services.html">Services</a>
+          <a href="cuts.html">Cuts</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
         </nav>
+        <a class="btn btn--primary btn--sm header-book" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book Now</a>
       </div>
     </header>
 
     <main>
       <section class="hero" aria-label="Welcome">
         <div class="hero__media">
-              <img
-                src="images/todecacho.webp"
-                alt="Barber detailing a clean hairline with clippers"
-                width="1600"
-                height="1067"
-              />
+          <img
+            src="images/jorun-banner.webp"
+            alt="Jorun, the barber behind Jo-Barber"
+            width="750"
+            height="1093"
+          />
         </div>
         <div class="hero__panel">
           <div class="hero__pattern" aria-hidden="true"></div>
           <div class="hero__copy">
-            <h1 class="hero__title">Jo-Barber</h1>
-            <p class="hero__tagline">Specialty men's cuts</p>
-            <div class="hero__accent" aria-hidden="true"></div>
+            <h1 class="hero__logo">
+              <img
+                src="images/logo.webp"
+                alt="Jo-Barber — Specialty men's cuts"
+                width="240"
+                height="227"
+              />
+            </h1>
             <div class="hero__actions">
-              <button class="btn btn--primary" type="button">Book Now</button>
-              <a class="btn btn--ghost" href="services.html">View services</a>
+              <a class="btn btn--primary" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book Now</a>
+              <a class="btn btn--ghost" href="cuts.html">View cuts</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="statement reveal">
-        <div class="container">
-          <p class="statement__quote">
-            Precision you can feel. Presence you can see.
-          </p>
-          <p class="statement__attr">The Jo-Barber standard</p>
-        </div>
-      </section>
-
       <section class="reel" aria-label="Before and after">
         <div class="container">
-          <header class="reel__header reveal">
+          <header class="reel__header">
             <p class="section__eyebrow">In the chair</p>
             <h2 class="section__title">Before &amp; after</h2>
           </header>
 
-          <div class="reel__stage reveal">
+          <div class="reel__stage">
             <div class="reel__panel">
               <div class="reel__frame">
                 <video
@@ -145,11 +120,20 @@
             </div>
           </div>
 
-          <div class="reel__controls reveal">
+          <div class="reel__controls">
             <button class="btn btn--ghost reel__toggle" type="button" aria-pressed="false">
-              Play sequence
+              Play
             </button>
           </div>
+        </div>
+      </section>
+
+      <section class="statement reveal">
+        <div class="container">
+          <p class="statement__quote">
+            Specializing in men's cuts, for every type of hair.
+          </p>
+          <p class="statement__attr">Straight · Wavy · Curly · Coily</p>
         </div>
       </section>
 
@@ -157,7 +141,7 @@
         <div class="container">
           <header class="section__header reveal">
             <p class="section__eyebrow">The menu</p>
-            <h2 class="section__title">Services &amp; pricing</h2>
+            <h2 class="section__title">Cuts &amp; pricing</h2>
             <p class="section__sub">
               Clean work, fair prices, and the details that make the difference.
             </p>
@@ -166,56 +150,34 @@
           <ul class="service-list">
             <li class="service">
               <div class="service__info">
-                <h3 class="service__name">Eyebrow Trim and Lineup</h3>
-                <p class="service__meta">Add-on · Finish that frames the face</p>
-              </div>
-              <p class="service__price"><span>Price</span> $7.50</p>
-              <button class="btn btn--ghost btn--sm" type="button">Book</button>
-            </li>
-
-            <li class="service">
-              <div class="service__info">
                 <h3 class="service__name">Precision Haircut</h3>
-                <p class="service__meta">Details · Shape, fade, and finish</p>
               </div>
               <p class="service__price"><span>Price</span> $27.50</p>
-              <button class="btn btn--ghost btn--sm" type="button">Book</button>
-            </li>
-
-            <li class="service">
-              <div class="service__info">
-                <h3 class="service__name">Beard Trim and Line Up</h3>
-                <p class="service__meta">Shorter service · Clean edges, sharp shape</p>
-              </div>
-              <p class="service__price"><span>Price</span> $15</p>
-              <button class="btn btn--ghost btn--sm" type="button">Book</button>
+              <a class="btn btn--ghost btn--sm" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book</a>
             </li>
 
             <li class="service">
               <div class="service__info">
                 <h3 class="service__name">Haircut and Beard Trim</h3>
-                <p class="service__meta">Details · Full look, one chair</p>
               </div>
               <p class="service__price"><span>Price</span> $40</p>
-              <button class="btn btn--ghost btn--sm" type="button">Book</button>
+              <a class="btn btn--ghost btn--sm" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book</a>
             </li>
 
             <li class="service">
               <div class="service__info">
-                <h3 class="service__name">Kids Cut</h3>
-                <p class="service__meta">Ages 12 &amp; under · Patient, precise</p>
+                <h3 class="service__name">Beard Trim and Line Up</h3>
               </div>
-              <p class="service__price"><span>Price</span> $22</p>
-              <button class="btn btn--ghost btn--sm" type="button">Book</button>
+              <p class="service__price"><span>Price</span> $15</p>
+              <a class="btn btn--ghost btn--sm" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book</a>
             </li>
 
             <li class="service">
               <div class="service__info">
-                <h3 class="service__name">Hot Towel Shave</h3>
-                <p class="service__meta">Classic finish · Slow down and reset</p>
+                <h3 class="service__name">Eyebrow Trim and Lineup</h3>
               </div>
-              <p class="service__price"><span>Price</span> $30</p>
-              <button class="btn btn--ghost btn--sm" type="button">Book</button>
+              <p class="service__price"><span>Price</span> $7.50</p>
+              <a class="btn btn--ghost btn--sm" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book</a>
             </li>
           </ul>
         </div>
@@ -228,7 +190,7 @@
               <h2>Ready for your next cut?</h2>
               <p>Walk in looking good. Walk out looking like you.</p>
             </div>
-            <button class="btn btn--primary" type="button">Book Now</button>
+            <a class="btn btn--primary" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book Now</a>
           </div>
         </div>
       </section>
@@ -270,7 +232,7 @@
             </a>
           </div>
           <nav class="footer-nav" aria-label="Footer">
-            <a href="services.html">Services</a>
+            <a href="cuts.html">Cuts</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
           </nav>

@@ -43,99 +43,58 @@
   }
 
   const reelStage = document.querySelector(".reel__stage");
-  const beforeVideo = document.querySelector(".reel__video--before");
-  const afterVideo = document.querySelector(".reel__video--after");
+  const reelVideos = [...document.querySelectorAll(".reel__video")];
   const reelToggle = document.querySelector(".reel__toggle");
   const TARGET_SECONDS = 4;
+  const LOOP_PAUSE_MS = 500;
 
-  if (reelStage && beforeVideo && afterVideo && reelToggle) {
+  if (reelStage && reelVideos.length && reelToggle) {
     let playing = false;
-    let runId = 0;
-    let gapTimer = 0;
-    let cancelClip = null;
+    let restartTimer = 0;
+    let endedCount = 0;
 
-    const setActive = (video) => {
-      beforeVideo.closest(".reel__panel").classList.toggle("is-active", video === beforeVideo);
-      afterVideo.closest(".reel__panel").classList.toggle("is-active", video === afterVideo);
-    };
-
+    // Clips have different lengths, so each gets its own rate to finish together.
     const fitToTarget = (video) => {
       const duration = video.duration;
       if (!Number.isFinite(duration) || duration <= 0) return;
       video.playbackRate = Math.min(3, Math.max(0.5, duration / TARGET_SECONDS));
     };
 
-    const prepare = (video) =>
+    const whenReady = (video) =>
       new Promise((resolve) => {
-        const ready = () => {
-          fitToTarget(video);
-          video.currentTime = 0;
-          resolve();
-        };
-        if (video.readyState >= 1) ready();
-        else video.addEventListener("loadedmetadata", ready, { once: true });
+        if (video.readyState >= 1) resolve();
+        else video.addEventListener("loadedmetadata", resolve, { once: true });
       });
 
-    const playClip = (video, id) =>
-      new Promise(async (resolve) => {
-        if (id !== runId) return resolve();
-        await prepare(video);
-        if (id !== runId) return resolve();
-        setActive(video);
-
-        const finish = () => {
-          video.removeEventListener("ended", finish);
-          cancelClip = null;
-          resolve();
-        };
-
-        cancelClip = finish;
-        video.addEventListener("ended", finish);
-        try {
-          await video.play();
-        } catch {
-          finish();
-        }
+    const startTogether = async () => {
+      await Promise.all(reelVideos.map(whenReady));
+      if (!playing) return;
+      endedCount = 0;
+      reelVideos.forEach((video) => {
+        fitToTarget(video);
+        video.currentTime = 0;
       });
-
-    const stopAll = () => {
-      runId += 1;
-      window.clearTimeout(gapTimer);
-      if (cancelClip) cancelClip();
-      beforeVideo.pause();
-      afterVideo.pause();
-      beforeVideo.closest(".reel__panel").classList.remove("is-active");
-      afterVideo.closest(".reel__panel").classList.remove("is-active");
+      reelVideos.forEach((video) => video.play().catch(() => {}));
     };
 
-    const wait = (ms, id) =>
-      new Promise((resolve) => {
-        gapTimer = window.setTimeout(() => resolve(id === runId), ms);
+    reelVideos.forEach((video) => {
+      video.addEventListener("ended", () => {
+        endedCount += 1;
+        if (endedCount < reelVideos.length || !playing) return;
+        restartTimer = window.setTimeout(startTogether, LOOP_PAUSE_MS);
       });
-
-    const runSequence = async (id) => {
-      while (playing && id === runId) {
-        await playClip(beforeVideo, id);
-        if (!playing || id !== runId) break;
-        beforeVideo.pause();
-        if (!(await wait(120, id))) break;
-        await playClip(afterVideo, id);
-        if (!playing || id !== runId) break;
-        afterVideo.pause();
-        if (!(await wait(500, id))) break;
-      }
-    };
+    });
 
     const setPlaying = (next) => {
       if (next === playing) return;
       playing = next;
       reelToggle.setAttribute("aria-pressed", String(playing));
-      reelToggle.textContent = playing ? "Pause sequence" : "Play sequence";
+      reelToggle.textContent = playing ? "Pause" : "Play";
+      window.clearTimeout(restartTimer);
       if (playing) {
-        const id = ++runId;
-        runSequence(id);
+        startTogether();
       } else {
-        stopAll();
+        reelVideos.forEach((video) => video.pause());
       }
     };
 
@@ -145,16 +104,14 @@
       const reelObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              if (!playing) setPlaying(true);
-            } else if (playing) {
-              setPlaying(false);
-            }
+            setPlaying(entry.isIntersecting);
           });
         },
         { threshold: 0.45 }
       );
       reelObserver.observe(reelStage);
+    } else {
+      setPlaying(true);
     }
   }
 })();

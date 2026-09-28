@@ -11,49 +11,27 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body class="page-shell">
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="brand" href="index.html">Jo-Barber</a>
-        <div class="social" aria-label="Social media">
-          <a
-            class="social__link social__link--ig"
-            href="https://www.instagram.com/jo_barber32/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
-              />
-            </svg>
-          </a>
-          <a
-            class="social__link social__link--fb"
-            href="https://www.facebook.com/jorun.christianson.7"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"
-              />
-            </svg>
-          </a>
-        </div>
+        <a class="brand brand--wordmark" href="index.html">
+          <img src="images/wordmark.webp" alt="Jo-Barber" width="463" height="144" />
+        </a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
           <span></span>
         </button>
         <nav class="nav" aria-label="Primary">
           <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
+          <a href="cuts.html">Cuts</a>
           <a href="about.html">About</a>
           <a href="contact.html" aria-current="page">Contact</a>
         </nav>
+        <a class="btn btn--primary btn--sm header-book" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book Now</a>
       </div>
     </header>
 
@@ -67,8 +45,7 @@
       <section class="page-body">
         <div class="container">
           <p class="placeholder">
-            Content for this page will live here. Book Now buttons are ready to
-            wire up when you are.
+            Content for this page will live here.
           </p>
         </div>
       </section>
@@ -110,7 +87,7 @@
             </a>
           </div>
           <nav class="footer-nav" aria-label="Footer">
-            <a href="services.html">Services</a>
+            <a href="cuts.html">Cuts</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
           </nav>
