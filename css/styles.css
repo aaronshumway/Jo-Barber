@@ -293,10 +293,11 @@ button {
   display: grid;
   place-items: center;
   background:
-    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(56, 189, 248, 0.35), transparent 60%),
-    radial-gradient(ellipse 80% 55% at 0% 100%, rgba(214, 40, 57, 0.4), transparent 60%),
-    linear-gradient(160deg, #2458b8 0%, #143a80 42%, #0a1f4d 75%, #06132e 100%);
-  background-size: 100% 100%, 100% 100%, 100% 160%;
+    radial-gradient(ellipse 55% 40% at 50% 42%, rgba(255, 255, 255, 0.16), transparent 70%),
+    radial-gradient(ellipse 70% 40% at 0% 0%, rgba(80, 150, 255, 0.35), transparent 60%),
+    radial-gradient(ellipse 100% 50% at 25% 100%, rgba(235, 50, 65, 0.75), transparent 70%),
+    linear-gradient(175deg, #2458b8 0%, #173d88 32%, #10275c 50%, #7a1428 72%, #c01b31 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 120%;
   animation: panelDrift 14s ease-in-out infinite alternate;
   clip-path: url(#panel-clip);
   -webkit-clip-path: url(#panel-clip);
@@ -304,27 +305,27 @@ button {
 
 @keyframes panelDrift {
   from {
-    background-position: 0 0, 0 0, 0 0%;
+    background-position: 0 0, 0 0, 0 0, 0 0%;
   }
   to {
-    background-position: 0 0, 0 0, 0 100%;
+    background-position: 0 0, 0 0, 0 0, 0 100%;
   }
 }
 
-/* Faint barber-pole stripes, fading out toward the logo */
+/* Red, white, and blue barber-pole stripes, strongest at the edges */
 .hero__pattern {
   position: absolute;
   inset: 0;
   background-image: repeating-linear-gradient(
     -45deg,
-    rgba(255, 255, 255, 0.07) 0 14px,
-    transparent 14px 28px,
-    rgba(214, 40, 57, 0.1) 28px 42px,
-    transparent 42px 56px
+    rgba(240, 50, 65, 0.42) 0 16px,
+    rgba(255, 255, 255, 0.24) 16px 32px,
+    rgba(40, 90, 200, 0.4) 32px 48px,
+    rgba(255, 255, 255, 0.24) 48px 64px
   );
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 70% 60% at 45% 45%, transparent 35%, #000 95%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 45% 45%, transparent 35%, #000 95%);
+  mask-image: radial-gradient(ellipse 72% 62% at 45% 45%, transparent 38%, rgba(0, 0, 0, 0.9) 100%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 62% at 45% 45%, transparent 38%, rgba(0, 0, 0, 0.9) 100%);
 }
 
 .hero__pattern::before {
@@ -381,9 +382,19 @@ button {
 }
 
 .hero__logo::after {
-  width: 118%;
-  border: 1.5px dashed rgba(255, 255, 255, 0.28);
-  animation: ringSpin 40s linear infinite;
+  width: 116%;
+  background: conic-gradient(
+    #e62d3c 0 16.66%,
+    #ffffff 16.66% 33.33%,
+    #3c78e6 33.33% 50%,
+    #e62d3c 50% 66.66%,
+    #ffffff 66.66% 83.33%,
+    #3c78e6 83.33% 100%
+  );
+  mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  opacity: 0.75;
+  animation: ringSpin 30s linear infinite;
 }
 
 @keyframes ringSpin {
