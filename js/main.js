@@ -42,76 +42,91 @@
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
-  const reelStage = document.querySelector(".reel__stage");
-  const reelVideos = [...document.querySelectorAll(".reel__video")];
-  const reelToggle = document.querySelector(".reel__toggle");
-  const TARGET_SECONDS = 4;
-  const LOOP_PAUSE_MS = 500;
+  const carousel = document.querySelector("[data-carousel]");
+  if (carousel) {
+    const slides = [...carousel.querySelectorAll("[data-slide]")];
+    const dotsWrap = carousel.querySelector("[data-dots]");
+    const count = slides.length;
+    const AUTO_MS = 6000;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let index = 0;
+    let autoTimer = 0;
 
-  if (reelStage && reelVideos.length && reelToggle) {
-    let playing = false;
-    let restartTimer = 0;
-    let endedCount = 0;
+    const dots = slides.map((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel__dot";
+      dot.setAttribute("aria-label", `Show review ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
 
-    // Clips have different lengths, so each gets its own rate to finish together.
-    const fitToTarget = (video) => {
-      const duration = video.duration;
-      if (!Number.isFinite(duration) || duration <= 0) return;
-      video.playbackRate = Math.min(3, Math.max(0.5, duration / TARGET_SECONDS));
+    const render = () => {
+      slides.forEach((slide, i) => {
+        let offset = i - index;
+        if (offset > count / 2) offset -= count;
+        if (offset < -count / 2) offset += count;
+        slide.dataset.pos =
+          Math.abs(offset) <= 1 ? String(offset) : offset > 0 ? "far-next" : "far-prev";
+        slide.setAttribute("aria-hidden", String(offset !== 0));
+      });
+      dots.forEach((dot, i) => dot.setAttribute("aria-current", String(i === index)));
     };
 
-    const whenReady = (video) =>
-      new Promise((resolve) => {
-        if (video.readyState >= 1) resolve();
-        else video.addEventListener("loadedmetadata", resolve, { once: true });
-      });
-
-    const startTogether = async () => {
-      await Promise.all(reelVideos.map(whenReady));
-      if (!playing) return;
-      endedCount = 0;
-      reelVideos.forEach((video) => {
-        fitToTarget(video);
-        video.currentTime = 0;
-      });
-      reelVideos.forEach((video) => video.play().catch(() => {}));
+    const goTo = (next) => {
+      index = (next + count) % count;
+      render();
+      restartAuto();
     };
 
-    reelVideos.forEach((video) => {
-      video.addEventListener("ended", () => {
-        endedCount += 1;
-        if (endedCount < reelVideos.length || !playing) return;
-        restartTimer = window.setTimeout(startTogether, LOOP_PAUSE_MS);
+    const restartAuto = () => {
+      window.clearInterval(autoTimer);
+      if (!reduceMotion) autoTimer = window.setInterval(() => goTo(index + 1), AUTO_MS);
+    };
+
+    carousel.querySelector("[data-prev]").addEventListener("click", () => goTo(index - 1));
+    carousel.querySelector("[data-next]").addEventListener("click", () => goTo(index + 1));
+
+    let justSwiped = false;
+
+    slides.forEach((slide) => {
+      slide.addEventListener("click", () => {
+        if (justSwiped) return;
+        if (slide.dataset.pos === "-1") goTo(index - 1);
+        if (slide.dataset.pos === "1") goTo(index + 1);
       });
     });
 
-    const setPlaying = (next) => {
-      if (next === playing) return;
-      playing = next;
-      reelToggle.setAttribute("aria-pressed", String(playing));
-      reelToggle.textContent = playing ? "Pause" : "Play";
-      window.clearTimeout(restartTimer);
-      if (playing) {
-        startTogether();
-      } else {
-        reelVideos.forEach((video) => video.pause());
+    carousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") goTo(index - 1);
+      if (event.key === "ArrowRight") goTo(index + 1);
+    });
+
+    let startX = null;
+    const track = carousel.querySelector(".carousel__track");
+    track.addEventListener("pointerdown", (event) => {
+      startX = event.clientX;
+    });
+    track.addEventListener("pointerup", (event) => {
+      if (startX === null) return;
+      const delta = event.clientX - startX;
+      startX = null;
+      justSwiped = Math.abs(delta) > 40;
+      if (justSwiped) {
+        goTo(delta < 0 ? index + 1 : index - 1);
+        window.setTimeout(() => {
+          justSwiped = false;
+        }, 0);
       }
-    };
+    });
 
-    reelToggle.addEventListener("click", () => setPlaying(!playing));
+    carousel.addEventListener("mouseenter", () => window.clearInterval(autoTimer));
+    carousel.addEventListener("mouseleave", restartAuto);
+    carousel.addEventListener("focusin", () => window.clearInterval(autoTimer));
+    carousel.addEventListener("focusout", restartAuto);
 
-    if ("IntersectionObserver" in window) {
-      const reelObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            setPlaying(entry.isIntersecting);
-          });
-        },
-        { threshold: 0.45 }
-      );
-      reelObserver.observe(reelStage);
-    } else {
-      setPlaying(true);
-    }
+    render();
+    restartAuto();
   }
 })();

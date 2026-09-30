@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
     <title>Contact — Jo-Barber</title>
-    <meta name="description" content="Contact Jo-Barber." />
+    <meta
+      name="description"
+      content="Contact Jo-Barber in north Provo. Text 385-985-7275. Open Monday–Saturday 9am–6pm, by appointment only."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,6 +21,14 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body class="page-shell">
+    <div class="announce">
+      <p>
+        <strong>New clients: $10 off your first cut</strong>
+        <span class="announce__sep" aria-hidden="true">·</span>
+        <span>By appointment only</span>
+      </p>
+    </div>
+
     <header class="site-header">
       <div class="site-header__inner">
         <a class="brand brand--wordmark" href="index.html">
@@ -39,14 +51,63 @@
       <section class="page-hero">
         <div class="container">
           <h1>Contact</h1>
-          <p>Hours, location, and booking details — coming soon.</p>
+          <p>By appointment only. Texting is the fastest way to reach me.</p>
         </div>
       </section>
       <section class="page-body">
-        <div class="container">
-          <p class="placeholder">
-            Content for this page will live here.
-          </p>
+        <div class="container contact-grid">
+          <article class="contact-card contact-card--phone reveal">
+            <p class="section__eyebrow">Phone</p>
+            <a class="contact-card__big" href="sms:+13859857275">385-985-7275</a>
+            <p class="contact-card__badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2z" /></svg>
+              Text preferred
+            </p>
+            <div class="contact-card__actions">
+              <a class="btn btn--primary" href="sms:+13859857275">Text</a>
+            </div>
+          </article>
+
+          <article class="contact-card reveal">
+            <p class="section__eyebrow">Location</p>
+            <address class="address address--card">
+              <a class="address__link" href="https://maps.app.goo.gl/AkN4vCheGGU8RrWdA" target="_blank" rel="noopener noreferrer">
+                <span class="address__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" /></svg>
+                </span>
+                <span class="address__body">
+                  <span class="address__street">717 E 3230 N</span>
+                  <span class="address__city">Provo, UT</span>
+                  <span class="address__note">Around the left side and down the stairs</span>
+                </span>
+              </a>
+            </address>
+            <a class="btn btn--primary" href="https://maps.app.goo.gl/AkN4vCheGGU8RrWdA" target="_blank" rel="noopener noreferrer">Get directions</a>
+          </article>
+
+          <article class="contact-card reveal">
+            <p class="section__eyebrow">Hours</p>
+            <dl class="contact-card__hours">
+              <div>
+                <dt>Monday – Saturday</dt>
+                <dd>9am – 6pm</dd>
+              </div>
+              <div>
+                <dt>Sunday</dt>
+                <dd>Closed</dd>
+              </div>
+            </dl>
+            <p class="contact-card__note"><strong>By appointment only</strong> · North Provo</p>
+          </article>
+
+          <article class="contact-card reveal">
+            <p class="section__eyebrow">Book online</p>
+            <p class="contact-card__text">
+              Pick a time that works for you. New clients get
+              <strong>$10 off their first cut</strong>.
+            </p>
+            <a class="btn btn--primary" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book Now</a>
+          </article>
         </div>
       </section>
     </main>
@@ -55,37 +116,9 @@
       <div class="container site-footer__inner">
         <div class="site-footer__brand">
           <a class="brand" href="index.html">Jo-Barber</a>
-          <p>More than a cut.</p>
+          <p class="site-footer__tagline">More than a cut</p>
         </div>
         <div class="site-footer__actions">
-          <div class="social" aria-label="Social media">
-            <a
-              class="social__link social__link--ig"
-              href="https://www.instagram.com/jo_barber32/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
-                />
-              </svg>
-            </a>
-            <a
-              class="social__link social__link--fb"
-              href="https://www.facebook.com/jorun.christianson.7"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"
-                />
-              </svg>
-            </a>
-          </div>
           <nav class="footer-nav" aria-label="Footer">
             <a href="cuts.html">Cuts</a>
             <a href="about.html">About</a>

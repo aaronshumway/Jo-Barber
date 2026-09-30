@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
     <title>Jo-Barber — Specialty men's cuts</title>
     <meta
       name="description"
@@ -30,8 +31,24 @@
         <clipPath id="banner-clip" clipPathUnits="objectBoundingBox">
           <path d="M 0 0 L 1 0 L 1 0.9 Q 0.5 1.04 0 0.9 Z" />
         </clipPath>
+        <linearGradient id="star-gold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ffe08a" />
+          <stop offset="0.55" stop-color="#f2b33d" />
+          <stop offset="1" stop-color="#c98a12" />
+        </linearGradient>
+        <symbol id="star" viewBox="0 0 24 24">
+          <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z" />
+        </symbol>
       </defs>
     </svg>
+
+    <div class="announce">
+      <p>
+        <strong>New clients: $10 off your first cut</strong>
+        <span class="announce__sep" aria-hidden="true">·</span>
+        <span>By appointment only</span>
+      </p>
+    </div>
 
     <header class="site-header">
       <div class="site-header__inner">
@@ -55,10 +72,10 @@
       <section class="hero" aria-label="Welcome">
         <div class="hero__media">
           <img
-            src="images/jorun-banner.webp"
-            alt="Jorun, the barber behind Jo-Barber"
-            width="750"
-            height="1093"
+            src="images/jo-barber-banner.webp"
+            alt="Jorun standing in his barbershop beside the barber chair"
+            width="2400"
+            height="1800"
           />
         </div>
         <div class="hero__panel">
@@ -80,54 +97,6 @@
         </div>
       </section>
 
-      <section class="reel" aria-label="Before and after">
-        <div class="container">
-          <header class="reel__header">
-            <p class="section__eyebrow">In the chair</p>
-            <h2 class="section__title">Before &amp; after</h2>
-          </header>
-
-          <div class="reel__stage">
-            <div class="reel__panel">
-              <div class="reel__frame">
-                <video
-                  class="reel__video reel__video--before"
-                  src="images/before.mp4"
-                  muted
-                  playsinline
-                  preload="auto"
-                ></video>
-                <span class="reel__tag">Before</span>
-              </div>
-            </div>
-
-            <div class="reel__split" aria-hidden="true">
-              <span class="reel__split-line"></span>
-              <span class="reel__split-mark">vs</span>
-            </div>
-
-            <div class="reel__panel">
-              <div class="reel__frame">
-                <video
-                  class="reel__video reel__video--after"
-                  src="images/after.mp4"
-                  muted
-                  playsinline
-                  preload="auto"
-                ></video>
-                <span class="reel__tag reel__tag--after">After</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="reel__controls">
-            <button class="btn btn--ghost reel__toggle" type="button" aria-pressed="false">
-              Play
-            </button>
-          </div>
-        </div>
-      </section>
-
       <section class="statement reveal">
         <div class="container">
           <p class="statement__quote">
@@ -137,13 +106,46 @@
         </div>
       </section>
 
+      <section class="showcase" aria-label="Featured cuts">
+        <div class="container">
+          <div class="showcase__grid">
+            <a class="showcase__card reveal" href="cuts.html" style="--pos: 45% 20%">
+              <img src="images/mid-fade.webp" alt="Mid fade" width="1170" height="992" loading="lazy" />
+              <span class="showcase__label">
+                <span class="showcase__name">Mid Fade</span>
+              </span>
+            </a>
+            <a class="showcase__card reveal" href="cuts.html" style="--pos: 52% 30%">
+              <img src="images/modern-mullet.webp" alt="Modern mullet" width="1169" height="1268" loading="lazy" />
+              <span class="showcase__label">
+                <span class="showcase__name">Modern Mullet</span>
+              </span>
+            </a>
+            <a class="showcase__card reveal" href="cuts.html" style="--pos: 50% 30%">
+              <img src="images/4-guard-blend.webp" alt="4 guard blend" width="1279" height="1600" loading="lazy" />
+              <span class="showcase__label">
+                <span class="showcase__name">4 Guard Blend</span>
+              </span>
+            </a>
+          </div>
+          <p class="showcase__more reveal">
+            <a class="btn showcase__btn" href="cuts.html">
+              See other cuts
+              <span class="showcase__btn-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
+            </a>
+          </p>
+        </div>
+      </section>
+
       <section class="section services" id="services">
         <div class="container">
           <header class="section__header reveal">
             <p class="section__eyebrow">The menu</p>
             <h2 class="section__title">Cuts &amp; pricing</h2>
             <p class="section__sub">
-              Clean work, fair prices, and the details that make the difference.
+              New clients get $10 off their first cut.
             </p>
           </header>
 
@@ -183,13 +185,123 @@
         </div>
       </section>
 
-      <section class="cta">
+      <section class="section reviews" aria-labelledby="reviews-title">
         <div class="container">
-          <div class="cta__panel reveal">
-            <div class="cta__copy">
-              <h2>Ready for your next cut?</h2>
-              <p>Walk in looking good. Walk out looking like you.</p>
+          <header class="section__header reveal">
+            <p class="section__eyebrow">Reviews</p>
+            <h2 class="section__title" id="reviews-title">What clients say</h2>
+          </header>
+
+          <div class="carousel" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Client reviews">
+            <div class="carousel__track">
+              <figure class="review" data-slide>
+                <div class="review__stars" role="img" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                </div>
+                <blockquote class="review__text">Very easy to book with, and adjust to your desired haircut. He really puts the customer first in making sure they have a good experience. I highly recommend getting a haircut from Jo-barber!</blockquote>
+                <figcaption class="review__name">Andrew Anderson</figcaption>
+              </figure>
+              <figure class="review" data-slide>
+                <div class="review__stars" role="img" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                </div>
+                <blockquote class="review__text">Jorun does such an amazing job every time I come in! I have recommended him to countless guys, and just like me he has become their go to barber. If your looking for a wholesome chat, a picture perfect haircut, and a new barber to brag to your friends about, JoBarber is your guy.</blockquote>
+                <figcaption class="review__name">Bryson Raban</figcaption>
+              </figure>
+              <figure class="review" data-slide>
+                <div class="review__stars" role="img" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                </div>
+                <blockquote class="review__text">If there wasn't already a place called G.O.A.T haircuts, Jo could very well take that title. He is a legend, the nicest dude on earth and has given me the best haircuts of my life.</blockquote>
+                <figcaption class="review__name">Talon</figcaption>
+              </figure>
+              <figure class="review" data-slide>
+                <div class="review__stars" role="img" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                </div>
+                <blockquote class="review__text">The most fire cut I’ve ever had in Utah. Perfectly blended. Jojo takes care of his people. Don’t go anywhere else</blockquote>
+                <figcaption class="review__name">Ben Sammons</figcaption>
+              </figure>
+              <figure class="review" data-slide>
+                <div class="review__stars" role="img" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                  <svg viewBox="0 0 24 24"><use href="#star" /></svg>
+                </div>
+                <blockquote class="review__text">Had my last 15+ haircuts from Jorun. Does a fantastic job every time.</blockquote>
+                <figcaption class="review__name">Nate Richardson</figcaption>
+              </figure>
             </div>
+
+            <div class="carousel__controls">
+              <button class="carousel__btn" type="button" data-prev aria-label="Previous review">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+              </button>
+              <div class="carousel__dots" data-dots></div>
+              <button class="carousel__btn" type="button" data-next aria-label="Next review">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hours" aria-labelledby="hours-title">
+        <div class="container hours__grid">
+          <div class="hours__info reveal">
+            <p class="section__eyebrow">Hours</p>
+            <h2 class="hours__title" id="hours-title">Book your spot</h2>
+            <dl class="hours__list">
+              <div>
+                <dt>Monday – Saturday</dt>
+                <dd>9am – 6pm</dd>
+              </div>
+              <div>
+                <dt>Sunday</dt>
+                <dd>Closed</dd>
+              </div>
+            </dl>
+            <p class="hours__note">
+              <strong>By appointment only</strong> · North Provo ·
+              Questions? Text <a href="sms:+13859857275">385-985-7275</a>
+            </p>
+            <address class="address">
+              <a class="address__link" href="https://maps.app.goo.gl/AkN4vCheGGU8RrWdA" target="_blank" rel="noopener noreferrer">
+                <span class="address__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" /></svg>
+                </span>
+                <span class="address__body">
+                  <span class="address__street">717 E 3230 N</span>
+                  <span class="address__city">Provo, UT</span>
+                  <span class="address__note">Around the left side and down the stairs</span>
+                  <span class="address__cta">Get directions <span aria-hidden="true">↗</span></span>
+                </span>
+              </a>
+            </address>
+          </div>
+
+          <div class="promo reveal">
+            <p class="promo__eyebrow">New clients</p>
+            <p class="promo__amount">$10 off</p>
+            <p class="promo__label">your first cut</p>
             <a class="btn btn--primary" href="https://jorunchristianson.setmore.com/" target="_blank" rel="noopener noreferrer">Book Now</a>
           </div>
         </div>
@@ -200,37 +312,9 @@
       <div class="container site-footer__inner">
         <div class="site-footer__brand">
           <a class="brand" href="index.html">Jo-Barber</a>
-          <p>More than a cut.</p>
+          <p class="site-footer__tagline">More than a cut</p>
         </div>
         <div class="site-footer__actions">
-          <div class="social" aria-label="Social media">
-            <a
-              class="social__link social__link--ig"
-              href="https://www.instagram.com/jo_barber32/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
-                />
-              </svg>
-            </a>
-            <a
-              class="social__link social__link--fb"
-              href="https://www.facebook.com/jorun.christianson.7"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"
-                />
-              </svg>
-            </a>
-          </div>
           <nav class="footer-nav" aria-label="Footer">
             <a href="cuts.html">Cuts</a>
             <a href="about.html">About</a>
