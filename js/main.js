@@ -42,6 +42,13 @@
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
+  const hero = document.querySelector(".hero");
+  if (hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      hero.classList.toggle("is-paused", !entry.isIntersecting);
+    }).observe(hero);
+  }
+
   const carousel = document.querySelector("[data-carousel]");
   if (carousel) {
     const slides = [...carousel.querySelectorAll("[data-slide]")];

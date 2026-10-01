@@ -422,6 +422,13 @@ button {
   }
 }
 
+/* Set by main.js while the banner is scrolled out of view */
+.hero.is-paused .hero__panel,
+.hero.is-paused .hero__pattern::after,
+.hero.is-paused .hero__logo::after {
+  animation-play-state: paused;
+}
+
 .hero__logo img {
   width: clamp(190px, 21vw, 290px);
   height: auto;
